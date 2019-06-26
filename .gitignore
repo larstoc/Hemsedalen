@@ -1,0 +1,15 @@
+/.idea
+/.history
+/target
+**/target
+**/.DS_Store
+/log
+/build/
+/classes
+/out
+
+# IntelliJ
+*.iml
+/gradle.properties
+
+gradle.properties
