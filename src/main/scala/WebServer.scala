@@ -6,7 +6,7 @@ import akka.stream.ActorMaterializer
 
 import scala.io.StdIn
 
-object WebServer {
+object WebServer extends App {
 
   implicit val system = ActorSystem("product-management-service")
   implicit val materializer = ActorMaterializer()
