@@ -7,8 +7,8 @@ object Main {
 
     signUpActor ! SignUp("Eirik")
     signUpActor ! SignUp("Lars Tore")
-    signUpActor ! PrintSignUps
-    signUpActor ! PrintWaitingList
+    signUpActor ! PrintSignUps()
+    signUpActor ! PrintWaitingList()
 
     Thread.sleep(1000)
     system.terminate()

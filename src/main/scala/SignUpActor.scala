@@ -1,17 +1,19 @@
 
 import akka.actor.Actor
 
+import scala.collection.mutable.ListBuffer
+
 class SignUpActor(capacity: Int) extends Actor {
 
-  var signUps: List[String] = List()
+  val signUps: ListBuffer[String] = ListBuffer()
 
   override def receive: Receive = {
-    case SignUp(name) => signUps :+ name
-    case PrintSignUps() => println(sigUpMessage(signUps.take(capacity)))
-    case PrintWaitingList() => println(waitingListMessage(signUps.drop(capacity)))
+    case SignUp(name) => signUps += name
+    case PrintSignUps() => println(sigUpMessage(signUps.toList.take(capacity)))
+    case PrintWaitingList() => println(waitingListMessage(signUps.toList.drop(capacity)))
   }
 
-  def sigUpMessage(signedUp: List[String]): String = s"${signedUp.mkString(", ")} You are signed up!"
+  def sigUpMessage(signedUp: List[String]): String = s"${signedUp.mkString(", ")} you are signed up!"
 
   def waitingListMessage(waitingList: List[String]): String = s"${waitingList.mkString(", ")}.. Sucks to be you.."
 }
